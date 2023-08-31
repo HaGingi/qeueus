@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Music on Hold priority</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        .list-group-item {
+            cursor: grab;
+        }
+        .list-group-item:active {
+            cursor: grabbing;
+        }
+        .unsaved-changes {
+            color: rgb(231, 4, 4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Manage Music on Hold priority</h1>
+        <p>Arrange the priority by dragging the items below:</p>
+        <ul class="list-group" id="sortable">
+            <li class="list-group-item"><i class="fas fa-grip-lines"></i> DNIS Music on hold</li>
+            <li class="list-group-item"><i class="fas fa-grip-lines"></i> User music on hold</li>
+            <li class="list-group-item"><i class="fas fa-grip-lines"></i> Queue Music on Hold</li>
+            <li class="list-group-item"><i class="fas fa-grip-lines"></i> Company Music on Hold</li>
+        </ul>
+        <div class="mt-3">
+            <button id="saveButton" class="btn btn-success">Save</button>
+            <button id="cancelButton" class="btn btn-danger">Cancel</button>
+            <span class="unsaved-changes" id="unsavedChanges" style="display: none;">Unsaved changes!</span>
+        </div>
+    </div>
+
+    <script>
+        var hasChanged = false;
+
+        $(function() {
+            $("#sortable").sortable({
+                start: function() {
+                    hasChanged = true;
+                    $("#unsavedChanges").show();
+                }
+            });
+            $("#sortable").disableSelection();
+
+            $("#saveButton").click(function() {
+                hasChanged = false;
+                $("#unsavedChanges").hide();
+                // Code to save changes to the server can be added here.
+            });
+
+            $("#cancelButton").click(function() {
+                if (hasChanged) {
+                    location.reload(); // Reload the page to reset changes
+                }
+            });
+        });
+    </script>
+</body>
+</html>

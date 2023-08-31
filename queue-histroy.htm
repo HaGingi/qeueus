@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+
+
+    
+    <title>Queue history</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/searchpanes/2.1.2/css/searchPanes.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.6.2/css/select.dataTables.min.css">
+  <style>
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 11pt;
+  }
+    div.dtsp-verticalContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-content: flex-start;
+      align-items: flex-start;
+    }
+ 
+    div.dtsp-verticalContainer div.dtsp-verticalPanes,
+    div.dtsp-verticalContainer div.container {
+      width: 30%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 0;
+    }
+ 
+    div.dtsp-verticalContainer div.dtsp-verticalPanes {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 26%;
+    }
+ 
+    div.dtsp-verticalPanes {
+      margin-right: 20px;
+    }
+ 
+    div.dtsp-title {
+      margin-right: 0px !important;
+      margin-top: 13px !important;
+    }
+ 
+    input.dtsp-search {
+      min-width: 0px !important;
+      padding-left: 0px !important;
+      margin: 0px !important;
+    }
+ 
+    div.dtsp-verticalContainer div.dtsp-verticalPanes div.dtsp-searchPanes {
+      flex-direction: column;
+      flex-basis: 0px;
+    }
+ 
+    div.dtsp-verticalContainer div.dtsp-verticalPanes div.dtsp-searchPanes div.dtsp-searchPane {
+      flex-basis: 0px;
+    }
+ 
+    div.dtsp-verticalContainer div.container {
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: 60%;
+    }
+ 
+    div.dtsp-panesContainer {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+
+    <div class="dtsp-verticalContainer">
+        <div class="dtsp-verticalPanes"></div>
+        <div class="container">
+  <table id="callTable" class="display nowrap" width="100%">
+    <thead>
+      <tr>
+        <th>Call ID (Obfuscated)</th>
+        <th>Original Call ID (Obfuscated)</th>
+        <th>Caller Name</th>
+        <th>Caller Number</th>
+        <th>Caller Type</th>
+        <th>Referred By</th>
+        <th>Queue Name</th>
+        <th>Call Duration</th>
+        <th>Call Disposition</th>
+        <th>Call Type</th>
+        <th>Agent Name</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>a3f6h7j9k0</td>
+        <td></td>
+        <td>John Smith</td>
+        <td>555-123-4567</td>
+        <td>Outside Caller</td>
+        <td></td>
+        <td>Sales Queue</td>
+        <td>0:08:32</td>
+        <td>Requested Callback</td>
+        <td>Inbound</td>
+        <td>Sarah Johnson (101)</td>
+        <td>5/16/2023 9:24</td>
+      </tr>
+      <tr>
+        <td>b2g5i8k1l2</td>
+        <td></td>
+        <td>Mary Johnson</td>
+        <td>555-987-6543</td>
+        <td>Outside Caller</td>
+        <td></td>
+        <td>Support Queue</td>
+        <td>0:12:45</td>
+        <td>Agent Answered</td>
+        <td>Inbound</td>
+        <td>Mark Thompson (202)</td>
+        <td>5/15/2023 14:55</td>
+      </tr>
+      <tr>
+        <td>c1h4j7l0m3</td>
+        <td></td>
+        <td>David Lee</td>
+        <td>555-555-5555</td>
+        <td>Outside Caller</td>
+        <td>Sales Department</td>
+        <td>Support Queue</td>
+        <td>0:04:19</td>
+        <td>Agent Answered</td>
+        <td>Inbound</td>
+        <td>Emily Davis (303)</td>
+        <td>5/14/2023 17:40</td>
+      </tr>
+      <tr>
+        <td>d0i3k6n9o4</td>
+        <td></td>
+        <td>Emily Brown</td>
+        <td>555-321-6547</td>
+        <td>Outside Caller</td>
+        <td>Sales Queue</td>
+        <td>Support Queue</td>
+        <td>0:10:15</td>
+        <td>User Hung Up</td>
+        <td>Inbound</td>
+        <td>John Smith (404)</td>
+        <td>5/13/2023 11:37</td>
+      </tr>
+      <tr>
+        <td>e9j2l5o8p1</td>
+        <td>a3f6h7j9k0</td>
+        <td>Jane Roberts</td>
+        <td>555-777-8888</td>
+        <td>Agent</td>
+        <td></td>
+        <td>Sales Queue</td>
+        <td>0:06:50</td>
+        <td>Requested Call Back</td>
+        <td>Outbound (Callback)</td>
+        <td>Jane Roberts</td>
+        <td>5/12/2023 16:22</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/searchpanes/2.1.2/js/dataTables.searchPanes.min.js"></script>
+  <script src="https://cdn.datatables.net/select/1.6.2/js/dataTables.select.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      var table = $('#callTable').DataTable({
+        searchPanes: {
+          layout: 'columns-1'
+        },
+        dom: '<"dtsp-dataTable"frtip>',
+        pageLength: 20
+      });
+      table.searchPanes();
+      $("div.dtsp-verticalPanes").append(table.searchPanes.container());
+    });
+  </script>
+</body>
+</html>

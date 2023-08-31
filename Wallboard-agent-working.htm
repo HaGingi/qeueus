@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Center Wallboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .card-text.small {
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .queue-name {
+            background-color: #f8f9fa; /* light gray */
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">All Agents</h1>
+        <div class="row">
+            <!-- Agent Malcolm Reynolds -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent Malcolm Reynolds</h4>
+                        <h2 class="card-text"><i class="fas fa-check-circle text-success"></i></h2>
+                        <p class="card-text font-weight-bold text-success">Available</p>
+                        <p class="card-text small">Signed in: 2h 15m</p>
+                        <p class="card-text small">Calls handled: 20</p>
+                        <p class="card-text small">Average call duration: 5 minutes</p>
+                        <p class="card-text small">Total calls taken: 30</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Agent Zoe Washburne -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent Zoe Washburne</h4>
+                        <h2 class="card-text"><i class="fas fa-user-clock text-danger"></i> (00:15:32)</h2>
+                        <p class="card-text font-weight-bold text-danger"><i class="fas fa-phone"></i> Talking to: 123-456-7890</p>
+                        <p class="card-text small queue-name">Queue: Customer Support</p>
+                        <p class="card-text small">Signed in: 3h 47m</p>
+                        <p class="card-text small">Calls handled: 15</p>
+                        <p class="card-text small">Average call duration: 7 minutes</p>
+                        <p class="card-text small">Total calls taken: 25</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Agent Jayne Cobb -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent Jayne Cobb</h4>
+                        <h2 class="card-text"><i class="fas fa-sign-out-alt text-secondary"></i></h2>
+                        <p class="card-text font-weight-bold text-secondary">Signed Out</p>
+                        <p class="card-text small">Signed in: -</p>
+                        <p class="card-text small">Calls handled: 0</p>
+                        <p class="card-text small">Average call duration: 0 minutes</p>
+                        <p class="card-text small">Total calls taken: 0</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Agent Kaylee Frye -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent Kaylee Frye</h4>
+                        <h2 class="card-text"><i class="fas fa-keyboard text-danger"></i></h2>
+                        <p class="card-text font-weight-bold text-danger"><i class="fas fa-comment-dots"></i> Typing to: 123-456-7890</p>
+                        <p class="card-text small queue-name">Queue: Tech Support</p>
+                        <p class="card-text small">Signed in: 1h 30m</p>
+                        <p class="card-text small">Calls handled: 10</p>
+                        <p class="card-text small">Average call duration: 4 minutes</p>
+                        <p class="card-text small">Total calls taken: 15</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Agent River Tam -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent River Tam</h4>
+                        <h2 class="card-text"><i class="fas fa-check-circle text-success"></i></h2>
+                        <p class="card-text font-weight-bold text-success">Available</p>
+                        <p class="card-text small">Signed in: 3h 45m</p>
+                        <p class="card-text small">Calls handled: 25</p>
+                        <p class="card-text small">Average call duration: 6 minutes</p>
+                        <p class="card-text small">Total calls taken: 35</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Agent Simon Tam -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">Agent Simon Tam</h4>
+                        <h2 class="card-text"><i class="fas fa-sign-out-alt text-secondary"></i></h2>
+                        <p class="card-text font-weight-bold text-secondary">Signed Out</p>
+                        <p class="card-text small">Signed in: -</p>
+                        <p class="card-text small">Calls handled: 0</p>
+                        <p class="card-text small">Average call duration: 0 minutes</p>
+                        <p class="card-text small">Total calls taken: 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Status,Time in Status,Caller Number,Caller ID Name,Call Direction,Agent,Call Duration,Entered
+In progress,0:15:32,123-456-7890,John Doe,Inbound,Zoe Washburne,0:15:32,8/3/2023 10:15
+In progress,0:12:10,777-888-9999,Alex Johnson,Inbound,Kaylee Frye,0:12:10,8/3/2023 14:00
+In progress,0:09:15,666-777-8888,Mike Smith,Outbound,Jayne Cobb,0:09:15,8/3/2023 16:45
+In progress,0:15:40,222-444-6666,William Adams,Inbound,Inara Serra,0:15:40,8/3/2023 15:30
+Available,0:00:00,-,-,-,Simon Tam,-,-
+Available,0:00:00,-,-,-,River Tam,-,-
+Available,0:00:00,-,-,-,Malcolm Reyn,-,-
+Available,0:00:00,-,-,-,Kaylee Frye,-,-
+Available,0:00:00,-,-,-,Jayne Cobb,-,-

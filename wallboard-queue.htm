@@ -1,0 +1,204 @@
+<html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Call Center Wallboard - Customer Support Queue</title>
+      <!-- Bootstrap CSS -->
+      <link
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        rel="stylesheet"
+      />
+      <!-- FontAwesome -->
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      />
+      <style>
+        .card-text.small {
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+        .queue-name {
+            background-color: #f8f9fa; /* light gray */
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        .table-container {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+</style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Wallboards</a>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Navigate
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="./wallboard-queue.htm">Queue</a>
+                    <a class="dropdown-item" href="./wallboard-agent.htm">All Agents</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          
+      <div class="container">
+        <h1 class="text-center my-4">Customer Support Queue</h1>
+
+        <div class="card-deck mb-4">
+          <div class="card bg-primary text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-headset fa-2x mb-3"></i>
+              <h5 class="card-title">Calls Waiting</h5>
+              <h2 class="font-weight-bold">10</h2>
+            </div>
+          </div>
+          <div class="card bg-success text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-phone fa-2x mb-3"></i>
+              <h5 class="card-title">Calls Handling</h5>
+              <h2 class="font-weight-bold">5</h2>
+            </div>
+          </div>
+
+          <div class="card bg-dark text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-phone-slash fa-2x mb-3"></i>
+              <h5 class="card-title">Calls Lost</h5>
+              <h2 class="font-weight-bold">0</h2>
+            </div>
+          </div>
+          <div class="card bg-warning text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-user-check fa-2x mb-3"></i>
+              <h5 class="card-title">Agents Available</h5>
+              <h2 class="font-weight-bold">3</h2>
+            </div>
+          </div>
+          <div class="card bg-danger text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-user-times fa-2x mb-3"></i>
+              <h5 class="card-title">Agents Busy</h5>
+              <h2 class="font-weight-bold">2</h2>
+            </div>
+          </div>
+          <div class="card bg-secondary text-white">
+            <div class="card-body text-center">
+              <i class="fas fa-sign-out-alt fa-2x mb-3"></i>
+              <h5 class="card-title">Agents Signed Out</h5>
+              <h2 class="font-weight-bold">1</h2>
+            </div>
+          </div>
+        </div>
+        <div class="table-container">        
+    <h2>Live Calls</h2>
+        <table class="table table-striped" id="liveCalls">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Time in Status</th>
+              <th>Caller Number</th>
+              <th>Caller ID Name</th>
+              <th>Call Direction</th>
+              <th>Agent</th>
+              <th>Call Duration</th>
+              <th>Entered</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Data will be loaded from queuedata.csv -->
+          </tbody>
+        </table>
+    </div>
+    <div class="table-container"> 
+        <h2>Agents</h2>
+        <table class="table table-striped" id="liveAgents">
+          <thead>
+            <tr>
+                <th>Agent</th>
+              <th>Status</th>
+              <th>Time in Status</th>
+              <th>Caller Number</th>
+              <th>Caller ID Name</th>
+              <th>Call Direction</th>           
+              <th>Call Duration</th>
+              <th>Entered</th>
+            </tr>
+          </thead>
+          <tbody id="tableBodyAgents">
+            <!-- TBD -->
+          </tbody>
+        </table>
+    </div>
+        <!-- Bootstrap JS and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+        <script>
+            $(document).ready(function () {
+              Papa.parse('queuedata.csv', {
+                download: true,
+                header: true,
+                complete: function(results) {
+                  let data = results.data;
+                  let tableBody = document.getElementById('tableBody');
+                  for (let i = 0; i < data.length; i++) {
+                    let row = `<tr>
+                      <td>${data[i].Status}</td>
+                      <td>${data[i]["Time in Status"]}</td>
+                      <td>${data[i]["Caller Number"]}</td>
+                      <td>${data[i]["Caller ID Name"]}</td>
+                      <td>${data[i]["Call Direction"]}</td>
+                      <td>${data[i].Agent}</td>
+                      <td>${data[i]["Call Duration"]}</td>
+                      <td>${data[i].Entered}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                  }
+                  $('#liveCalls').DataTable({
+                    "order": [[ 0, "asc" ]]
+                  });
+                }
+              });
+          
+              Papa.parse('liveagents.csv', {
+                download: true,
+                header: true,
+                complete: function(results) {
+                  let data = results.data;
+                  let tableBodyAgents = document.getElementById('tableBodyAgents');
+                  for (let i = 0; i < data.length; i++) {
+                    let row = `<tr>
+                        <td>${data[i].Agent}</td>
+                      <td>${data[i].Status}</td>
+                      <td>${data[i]["Time in Status"]}</td>
+                      <td>${data[i]["Caller Number"]}</td>
+                      <td>${data[i]["Caller ID Name"]}</td>
+                      <td>${data[i]["Call Direction"]}</td>
+                      <td>${data[i]["Call Duration"]}</td>
+                      <td>${data[i].Entered}</td>
+                    </tr>`;
+                    tableBodyAgents.innerHTML += row;
+                  }
+                  $('#liveAgents').DataTable({
+                    "order": [[ 0, "asc" ]]
+                  });
+                }
+              });
+            });
+          </script>
+          
+      </div>
+    </body>
+  </html>
+</html>

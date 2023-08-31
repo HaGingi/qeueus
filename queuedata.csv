@@ -1,0 +1,16 @@
+Status,Time in Status,Caller Number,Caller ID Name,Call Direction,Agent,Call Duration,Entered
+Waiting,0:10,987-654-3210,Jane Smith,Inbound,-,-,8/3/2023 11:30
+Waiting,0:05:20,555-555-5555,Unknown,Inbound,-,-,8/3/2023 13:00
+In progress,0:15:32,123-456-7890,John Doe,Inbound,Zoe Washburne,0:15:32,8/3/2023 10:15
+Waiting,0:05:45,456-789-1234,Bob Johnson,Outbound,-,-,8/3/2023 12:00
+Waiting,0:03:10,444-444-4444,Unknown,Inbound,-,-,8/3/2023 14:30
+Waiting,0:25:12,789-123-4567,Emily Adams,Inbound,-,-,8/3/2023 9:45
+Waiting,0:08:20,111-222-3333,Jane Doe,Inbound,-,-,8/3/2023 15:20
+Waiting,0:02:45,222-333-4444,Unknown,Inbound,-,-,8/3/2023 16:40
+In progress,0:12:10,777-888-9999,Alex Johnson,Inbound,Kaylee Frye,0:12:10,8/3/2023 14:00
+Waiting,0:04:30,333-444-5555,Unknown,Inbound,-,-,8/3/2023 17:00
+In progress,0:09:15,666-777-8888,Mike Smith,Outbound,Jayne Cobb,0:09:15,8/3/2023 16:45
+Waiting,0:06:55,555-444-3333,Unknown,Inbound,-,-,8/3/2023 17:20
+In progress,0:15:40,222-444-6666,William Adams,Inbound,Inara Serra,0:15:40,8/3/2023 15:30
+Waiting,0:08:25,333-555-7777,Sarah Johnson,Inbound,-,-,8/3/2023 16:50
+Waiting,0:07:10,777-888-5555,Unknown,Inbound,-,-,8/3/2023 18:10

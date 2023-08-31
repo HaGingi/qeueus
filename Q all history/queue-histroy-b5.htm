@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Call Data Table</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <table id="callTable" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Call ID (Obfuscated)</th>
+          <th>Original Call ID (Obfuscated)</th>
+          <th>Caller Name</th>
+          <th>Caller Number</th>
+          <th>Caller Type</th>
+          <th>Referred By</th>
+          <th>Queue Name</th>
+          <th>Call Duration</th>
+          <th>Call Disposition</th>
+          <th>Call Type</th>
+          <th>Agent Name</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table rows will be dynamically populated using JavaScript -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="12" style="text-align: left; background-color: rgb(246, 246, 246);">
+            <a href="export.csv" download style="font-size: 12px; text-decoration: none; font-weight: bold;">
+              <i class="fas fa-file-csv"></i> Export as CSV
+            </a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      // Populate the DataTable with the data
+      var table = $('#callTable').DataTable({
+        "paging": true,
+        "lengthMenu": [10, 25, 50, 75, 100],
+        "pageLength": 10,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "order": [[11, 'desc']], // Sort by Timestamp column in descending order
+        "data": [
+          ["a3f6h7j9k0", "", "John Smith", "555-123-4567", "Outside Caller", "", "Sales Queue", "0:08:32", "Requested Callback", "Inbound", "Sarah Johnson (101)", "5/16/2023 9:24"],
+          ["b2g5i8k1l2", "", "Mary Johnson", "555-987-6543", "Outside Caller", "", "Support Queue", "0:12:45", "Agent Answered", "Inbound", "Mark Thompson (202)", "5/15/2023 14:55"],
+          ["c1h4j7l0m3", "", "David Lee", "555-555-5555", "Outside Caller", "Sales Department", "Support Queue", "0:04:19", "Agent Answered", "Inbound", "Emily Davis (303)", "5/14/2023 17:40"],
+          ["d0i3k6n9o4", "", "Emily Brown", "555-321-6547", "Outside Caller", "Sales Queue", "Support Queue", "0:10:15", "User Hung Up", "Inbound", "John Smith (404)", "5/13/2023 11:37"],
+          ["e9j2l5o8p1", "a3f6h7j9k0", "Jane Roberts", "555-777-8888", "Agent", "", "Sales Queue", "0:06:50", "Requested Call Back", "Outbound (Callback)", "Jane Roberts", "5/12/2023 16:22"]
+          // Add more rows here...
+        ]
+      });
+
+      // Add the additional rows dynamically
+      var additionalRows = [
+        ["f8k1m4o7p0", "", "Michael Davis", "555-444-3333", "Outside Caller", "", "Support Queue", "0:08:07", "Agent Answered", "Inbound", "Sarah Johnson (101)", "5/11/2023 13:15"],
+        ["g7l0n3p6q9", "", "Jessica Brown", "555-666-9999", "Outside Caller", "Support Queue", "Sales Queue", "0:07:25", "Agent Answered", "Inbound", "Mark Thompson (202)", "5/10/2023 10:45"],
+        ["h6j9p2q5r8", "", "Andrew Wilson", "555-222-7777", "Outside Caller", "Sales Department", "Support Queue", "0:03:51", "User Hung Up", "Inbound", "Emily Davis (303)", "5/9/2023 16:37"],
+        ["g7l0n3dd6q9", "", "Jay Brown", "555-6566-9999", "Outside Caller", "Support Queue", "Sales Queue", "0:07:25", "Agent Answered", "Inbound", "Mark Thompson (202)", "5/10/2023 11:45"],
+        ["h6j9p2q5r8", "", "Andrew Wilson", "555-222-7777", "Outside Caller", "Sales Department", "Support Queue", "0:03:51", "User Hung Up", "Inbound", "Emily Davis (303)", "5/9/2023 16:37"],
+        ["g7l0n3p6q9", "", "Jessica Brown", "555-666-9999", "Outside Caller", "Support Queue", "Sales Queue", "0:07:25", "Agent Answered", "Inbound", "Mark Thompson (202)", "5/10/2023 10:45"],
+        ["h6j9p2q5r8", "", "Andrew Wilson", "555-222-7777", "Outside Caller", "Sales Department", "Support Queue", "0:03:51", "User Hung Up", "Inbound", "Emily Davis (303)", "5/9/2023 16:37"],
+        ["g7l0n3dd6q9", "", "Jay Brown", "555-6566-9999", "Outside Caller", "Support Queue", "Sales Queue", "0:07:25", "Agent Answered", "Inbound", "Mark Thompson (202)", "5/10/2023 11:45"],
+        ["h6j9p2q5r8", "", "Andrew Wilson", "555-222-7777", "Outside Caller", "Sales Department", "Support Queue", "0:03:51", "User Hung Up", "Inbound", "Emily Davis (303)", "5/9/2023 16:37"],
+        ["i5k8r1t4u7", "", "Samantha Green", "555-888-1111", "Outside Caller", "", "Sales Queue", "0:11:02", "Agent Answered", "Inbound", "John Smith (404)", "5/8/2023 20:10"]
+        // Add more rows here...
+      ];
+
+      table.rows.add(additionalRows).draw();
+    });
+  </script>
+  
+</body>
+</html>
